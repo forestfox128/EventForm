@@ -1,0 +1,13 @@
+
+.Wrapper {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 5% 90% 5%;
+}
+
+
+@media screen and (min-width: 640px) {
+    .Wrapper {
+        grid-template-columns: 20% 60% 20%;
+    }
+  }

@@ -1,12 +1,13 @@
 import React from 'react';
-import Button from '@material-ui/core/Button';
+import './Button.css';
 
 function CustomizedButton(props) {
+
     return (
         
-      <Button variant="contained" color="primary">
-        Hello World
-      </Button>
+      <button className="Button">
+        {props.buttonText}
+      </button>
     );
   }
 
