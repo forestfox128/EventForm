@@ -1,0 +1,22 @@
+.Toolbar {
+    height: 66px;
+    width: 100%;
+    margin-top: 14px;
+    left: 0;
+    background-color: #355990;
+    z-index: 90;
+}
+.ToolbarStripe {
+    height: 14px;
+    width: 100%;
+    background-color: #1e3b68;
+    display: flex;
+    z-index: 90;
+}
+
+.ToolbarText {
+    margin-left: 1em;
+    margin-top: 0.5em;
+    font-size: 32px;
+    color: #ffffff;
+}
