@@ -1,0 +1,24 @@
+.Input-big {
+    height: 2em;
+    width: 90%;
+    min-width: 120px;
+    float: left;
+}
+.Input-medium {
+    height: 2em;
+    width: 35%;
+    min-width: 100px;
+    float: left;
+}
+.Input-small {
+    height: 2em;
+    width: 10%;
+    min-width: 80px;
+    float: left;
+}
+.InputDate{
+    height: 2em;
+    width: 30%;
+    min-width: 100px;
+    float: left;
+}
