@@ -1,14 +1,21 @@
 import React from 'react';
-import Button from '@material-ui/core/Button';
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch
+} from 'react-router-dom';
+import CreateEventScreen from './Screens/CreateEventScreen';
+import SuccessScreen from './Screens/SuccessScreen';
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <Button variant="contained" color="primary">
-      Hello World
-    </Button>
-    </div>
+      <Router>
+          <Switch>
+            <Route path="/login" component={CreateEventScreen}/>
+            <Route path="/success" component={SuccessScreen}/>
+        </Switch> 
+      </Router> 
   );
 }
 
