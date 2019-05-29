@@ -22,3 +22,13 @@
     min-width: 100px;
     float: left;
 }
+.TextArea {
+    width: 94%;
+    min-width: 120px;
+    float: left;
+}
+.RadioInput {
+    padding: 1em;
+    color:#b0b0b5;
+    font-size: 16px;
+}

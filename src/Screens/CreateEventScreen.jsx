@@ -3,6 +3,8 @@ import Layout from '../Components/Layout/Layout';
 import Button from '../Components/Button/Button';
 import Form from '../Components/Form/Form';
 import Input from '../Components/Input/Input';
+import Textarea from '../Components/Input/TextArea';
+import RadioInput from '../Components/Input/RadioInput';
 import InputDate from '../Components/Input/InputDate';
 import FormRow from '../Components/FormRow/FormRow';
 import FormLabel from '../Components/FormLabel/FormLabel';
@@ -24,7 +26,7 @@ class CreateEventScreen extends React.Component {
                         </FormRow>
                         <FormRow>
                             <FormLabel key={0} >Description</FormLabel>
-                            <Input key={1} width={"big"} />
+                            <Textarea key={1} rows={"8"} placeholder={"Write about your event, be creative"} />
                         </FormRow>
                         <FormRow>
                             <FormLabel key={0} >Category</FormLabel>
@@ -32,7 +34,7 @@ class CreateEventScreen extends React.Component {
                         </FormRow>
                         <FormRow>
                             <FormLabel key={0} >Payment</FormLabel>
-                            <Input key={1} width={"big"} />
+                            <RadioInput key={1} label={"Event free"} />
                         </FormRow>
                         <FormRow>
                             <FormLabel key={0} >Reward</FormLabel>
