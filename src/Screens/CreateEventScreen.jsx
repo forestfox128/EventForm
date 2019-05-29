@@ -33,7 +33,8 @@ class CreateEventScreen extends React.Component {
                         </FormRow>
                         <FormRow>
                             <FormLabel key={0} >Category</FormLabel>
-                            <Select key={1} categories={false} categoriesName={categories} />
+                            <Select key={1} categories={false} categoriesName={categories} 
+                            description={"Descibe topic and people who should be interested in this event"}/>
                         </FormRow>
                         <FormRow>
                             <FormLabel key={0} >Payment</FormLabel>

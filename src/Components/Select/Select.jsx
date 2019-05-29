@@ -4,6 +4,7 @@ import './Select.css';
 function Select(props) {
 
     return (
+        <div>
         <select autoFocus className="Select-big">
         {props.categories &&
             props.categoriesName.map((data) =>
@@ -16,6 +17,8 @@ function Select(props) {
             )
         }
         </select>
+        <p>{props.description}</p>
+        </div>
     );
 }
 
