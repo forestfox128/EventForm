@@ -6,15 +6,18 @@ import Input from '../Components/Input/Input';
 import Textarea from '../Components/Input/TextArea';
 import RadioInput from '../Components/Input/RadioInput';
 import InputDate from '../Components/Input/InputDate';
+import Select from '../Components/Select/Select';
 import FormRow from '../Components/FormRow/FormRow';
 import FormLabel from '../Components/FormLabel/FormLabel';
-
+import categories from '../mocks/categories.json';
+import employes from '../mocks/employes.json';
 class CreateEventScreen extends React.Component {
 
     state = {
+        processedEmployes: ''
+    };
 
-    }
-
+    
     render() {
         return (
             <div style={{ marginTop: '4em' }}>
@@ -30,7 +33,7 @@ class CreateEventScreen extends React.Component {
                         </FormRow>
                         <FormRow>
                             <FormLabel key={0} >Category</FormLabel>
-                            <Input key={1} width={"big"} />
+                            <Select key={1} categories={false} categoriesName={categories} />
                         </FormRow>
                         <FormRow>
                             <FormLabel key={0} >Payment</FormLabel>
@@ -46,7 +49,7 @@ class CreateEventScreen extends React.Component {
                     <Form formTitle={"Coordinator"}>
                         <FormRow>
                             <FormLabel key={0} >Responsible</FormLabel>
-                            <Input key={1} width={"big"} />
+                            <Select key={1} categories={true} categoriesName={employes} />
                         </FormRow>
                         <FormRow>
                             <FormLabel key={0} >Email</FormLabel>
