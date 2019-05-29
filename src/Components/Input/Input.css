@@ -1,6 +1,6 @@
 .Input-big {
     height: 2em;
-    width: 90%;
+    width: 100%;
     min-width: 120px;
     float: left;
 }
@@ -23,7 +23,7 @@
     float: left;
 }
 .TextArea {
-    width: 94%;
+    width: 100%;
     min-width: 120px;
     float: left;
 }

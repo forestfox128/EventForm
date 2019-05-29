@@ -8,6 +8,7 @@ import RadioInput from '../Components/Input/RadioInput';
 import InputDate from '../Components/Input/InputDate';
 import Select from '../Components/Select/Select';
 import FormRow from '../Components/FormRow/FormRow';
+import Col from '../Components/FormRow/Col';
 import FormLabel from '../Components/FormLabel/FormLabel';
 import categories from '../mocks/categories.json';
 import employes from '../mocks/employes.json';
@@ -17,54 +18,77 @@ class CreateEventScreen extends React.Component {
         processedEmployes: ''
     };
 
-    
+
     render() {
         return (
             <div style={{ marginTop: '4em' }}>
                 <Layout>
                     <Form formTitle={"About"}>
                         <FormRow>
-                            <FormLabel key={0} >Title</FormLabel>
-                            <Input key={1} width={"big"} type={"text"} placeholder={"Make it short and clear"} />
+                            <Col size={"S"}>
+                                <FormLabel>Title</FormLabel>
+                            </Col>
+                            <Col size={"B"}>
+                                <Input width={"big"} type={"text"} placeholder={"Make it short and clear"} />
+                            </Col>
                         </FormRow>
                         <FormRow>
-                            <FormLabel key={0} >Description</FormLabel>
-                            <Textarea key={1} rows={"8"} placeholder={"Write about your event, be creative"} />
+                            <Col size={"S"}>
+                                <FormLabel >Description</FormLabel>
+                            </Col>
+                            <Col size={"B"}><Textarea rows={"8"} placeholder={"Write about your event, be creative"} /></Col>
+
                         </FormRow>
                         <FormRow>
-                            <FormLabel key={0} >Category</FormLabel>
-                            <Select key={1} categories={false} categoriesName={categories} 
-                            description={"Descibe topic and people who should be interested in this event"}/>
+                            <Col size={"S"}><FormLabel  >Category</FormLabel></Col>
+
+                            <Col size={"B"}><Select categories={false} categoriesName={categories}
+                                description={"Descibe topic and people who should be interested in this event"} /></Col>
+
                         </FormRow>
                         <FormRow>
-                            <FormLabel key={0} >Payment</FormLabel>
-                            <RadioInput key={1} label={"Event free"} />
+                            <Col size={"S"}><FormLabel  >Payment</FormLabel></Col>
+
+                            <Col size={"B"}><RadioInput label={"Event free"} /></Col>
+
                         </FormRow>
                         <FormRow>
-                            <FormLabel key={0} >Reward</FormLabel>
-                            <div key={1}><Input width={"small"} type={"number"} placeholder={"Number"}/>
-                                <p style={{marginLeft: '8em'}}>reward points for attendance</p>
-                            </div>
+                            <Col size={"S"}><FormLabel  >Reward</FormLabel></Col>
+
+                            <Col size={"B"}><div ><Input width={"small"} type={"number"} placeholder={"Number"} />
+                                <p style={{ marginLeft: '8em' }}>reward points for attendance</p>
+                            </div></Col>
+
                         </FormRow>
                     </Form>
+
                     <Form formTitle={"Coordinator"}>
                         <FormRow>
-                            <FormLabel key={0} >Responsible</FormLabel>
-                            <Select key={1} categories={true} categoriesName={employes} />
+                            <Col size={"S"}><FormLabel  >Responsible</FormLabel></Col>
+
+                            <Col size={"B"}><Select categories={true} categoriesName={employes} /></Col>
+
                         </FormRow>
                         <FormRow>
-                            <FormLabel key={0} >Email</FormLabel>
-                            <Input key={1} width={"big"} type={"email"} placeholder={"Email"}/>
+                            <Col size={"S"}><FormLabel  >Email</FormLabel></Col>
+
+                            <Col size={"B"}><Input width={"big"} type={"email"} placeholder={"Email"} /></Col>
+
                         </FormRow>
                     </Form>
+
                     <Form formTitle={"When"}>
                         <FormRow>
-                            <FormLabel key={0} >Starts on</FormLabel>
-                            <InputDate key={1}/>
+                            <Col size={"S"}><FormLabel  >Starts on</FormLabel></Col>
+
+                            <Col size={"B"}> <InputDate /></Col>
+
                         </FormRow>
                         <FormRow>
-                            <FormLabel key={0} >Duration</FormLabel>
-                            <Input key={1} width={"small"} type={"number"} placeholder={"Number"}/>
+                            <Col size={"S"}><FormLabel  >Duration</FormLabel></Col>
+
+                            <Col size={"B"}><Input width={"small"} type={"number"} placeholder={"Number"} /></Col>
+
                         </FormRow>
                     </Form>
                     <Button buttonText={"Publish event"}></Button>
