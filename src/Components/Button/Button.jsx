@@ -5,9 +5,9 @@ function CustomizedButton(props) {
 
     return (
         
-      <button className="Button">
-        {props.buttonText}
-      </button>
+      <input type="submit" className="Button" onClick={props.onClick} value={props.buttonText}>
+        
+      </input>
     );
   }
 

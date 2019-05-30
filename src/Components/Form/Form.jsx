@@ -9,9 +9,10 @@ function Form(props) {
         <FormCard>
             <div className="FormTitle">{props.formTitle}</div>
             <hr />
-            <form autoComplete="off" className='FormField' onKeyDown={props.onKeyDown} onSubmit={props.onSubmit}>
+            {/* <form autoComplete="off" className='FormField' onKeyDown={props.onKeyDown} 
+            onSubmit={props.onSubmit} ref={props.refe} noValidate> */}
                 {props.children}
-            </form>
+            {/* </form> */}
         </FormCard>
     );
 }

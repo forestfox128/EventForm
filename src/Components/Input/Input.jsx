@@ -11,6 +11,8 @@ function Input(props) {
         pattern={props.pattern}
         autoFocus
         className={classname}
+        name={props.name}
+        required
         ></input>
     );
 }

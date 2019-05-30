@@ -4,7 +4,7 @@ import './Input.css';
 function InputDate(props) {
 
     return (
-        <input type="date" className="InputDate"></input>
+        <input type="date" name={props.name} className="InputDate"></input>
     );
 }
 

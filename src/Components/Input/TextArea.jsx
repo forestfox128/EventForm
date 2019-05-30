@@ -11,6 +11,7 @@ function Input(props) {
         autoFocus
         cols={props.width}
         rows={props.rows}
+        name={props.name}
         ></textarea>
         <p>Counter znaków</p>
         </div>

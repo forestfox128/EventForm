@@ -20,6 +20,7 @@ function SelectWithCat(props) {
             values.push(<option key={data.id} value={data.name+" "+data.lastname}>{data.name+" "+data.lastname}</option>); 
     });
 
+
     return (
         <div>
         <select autoFocus className="Select-big">
