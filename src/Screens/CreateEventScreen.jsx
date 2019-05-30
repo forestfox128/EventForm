@@ -7,6 +7,7 @@ import Textarea from '../Components/Input/TextArea';
 import RadioInput from '../Components/Input/RadioInput';
 import InputDate from '../Components/Input/InputDate';
 import Select from '../Components/Select/Select';
+import SelectWithCat from '../Components/Select/SelectWithCat';
 import FormRow from '../Components/FormRow/FormRow';
 import Col from '../Components/FormRow/Col';
 import FormLabel from '../Components/FormLabel/FormLabel';
@@ -42,7 +43,7 @@ class CreateEventScreen extends React.Component {
                         <FormRow>
                             <Col size={"S"}><FormLabel  >Category</FormLabel></Col>
 
-                            <Col size={"B"}><Select categories={false} categoriesName={categories}
+                            <Col size={"B"}><Select categoriesName={categories}
                                 description={"Descibe topic and people who should be interested in this event"} /></Col>
 
                         </FormRow>
@@ -66,7 +67,7 @@ class CreateEventScreen extends React.Component {
                         <FormRow>
                             <Col size={"S"}><FormLabel  >Responsible</FormLabel></Col>
 
-                            <Col size={"B"}><Select categories={true} categoriesName={employes} /></Col>
+                            <Col size={"B"}><SelectWithCat categoriesName={employes} /></Col>
 
                         </FormRow>
                         <FormRow>
