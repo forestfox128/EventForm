@@ -1,0 +1,17 @@
+.additional-input-descpription-reward {
+    font-size: 14px;
+    color: #1a1a1a;
+    padding-top: 0.7em;
+    margin-left: 30%;
+}
+
+.additional-input-descpription-hour {
+    font-size: 14px;
+    color: #1a1a1a;
+    padding-top: 0.7em;
+    margin-left: 30%;
+}
+
+span.red-star{
+    color: #ff3333;
+}

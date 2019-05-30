@@ -13,6 +13,9 @@ import Col from '../Components/FormRow/Col';
 import FormLabel from '../Components/FormLabel/FormLabel';
 import categories from '../mocks/categories.json';
 import employes from '../mocks/employes.json';
+
+import '../style.css';
+
 class CreateEventScreen extends React.Component {
 
     state = {
@@ -27,7 +30,7 @@ class CreateEventScreen extends React.Component {
                     <Form formTitle={"About"}>
                         <FormRow>
                             <Col size={"S"}>
-                                <FormLabel>Title</FormLabel>
+                                <FormLabel>Title <span className='red-star'>*</span></FormLabel>
                             </Col>
                             <Col size={"B"}>
                                 <Input width={"big"} type={"text"} placeholder={"Make it short and clear"} />
@@ -35,29 +38,32 @@ class CreateEventScreen extends React.Component {
                         </FormRow>
                         <FormRow>
                             <Col size={"S"}>
-                                <FormLabel >Description</FormLabel>
+                                <FormLabel >Description <span className='red-star'>*</span></FormLabel>
                             </Col>
                             <Col size={"B"}><Textarea rows={"8"} placeholder={"Write about your event, be creative"} /></Col>
 
                         </FormRow>
                         <FormRow>
-                            <Col size={"S"}><FormLabel  >Category</FormLabel></Col>
+                            <Col size={"S"}><FormLabel  >Category </FormLabel></Col>
 
                             <Col size={"B"}><Select categoriesName={categories}
                                 description={"Descibe topic and people who should be interested in this event"} /></Col>
 
                         </FormRow>
                         <FormRow>
-                            <Col size={"S"}><FormLabel  >Payment</FormLabel></Col>
+                            <Col size={"S"}><FormLabel  >Payment </FormLabel></Col>
 
-                            <Col size={"B"}><RadioInput label={"Event free"} /></Col>
+                            <Col size={"B"}>
+                                <RadioInput label={"Event free"} value={"eventFree"} name={"eventPayment"} />
+                                <RadioInput label={"Event paid"} value={"eventPaid"} name={"eventPayment"}/>
+                            </Col>
 
                         </FormRow>
                         <FormRow>
-                            <Col size={"S"}><FormLabel  >Reward</FormLabel></Col>
+                            <Col size={"S"}><FormLabel>Reward</FormLabel></Col>
 
                             <Col size={"B"}><div ><Input width={"small"} type={"number"} placeholder={"Number"} />
-                                <p style={{ marginLeft: '8em' }}>reward points for attendance</p>
+                                <div className="additional-input-descpription-reward">reward points for attendance</div>
                             </div></Col>
 
                         </FormRow>
@@ -65,7 +71,7 @@ class CreateEventScreen extends React.Component {
 
                     <Form formTitle={"Coordinator"}>
                         <FormRow>
-                            <Col size={"S"}><FormLabel  >Responsible</FormLabel></Col>
+                            <Col size={"S"}><FormLabel  >Responsible <span className='red-star'>*</span></FormLabel></Col>
 
                             <Col size={"B"}><SelectWithCat categoriesName={employes} /></Col>
 
@@ -80,19 +86,28 @@ class CreateEventScreen extends React.Component {
 
                     <Form formTitle={"When"}>
                         <FormRow>
-                            <Col size={"S"}><FormLabel  >Starts on</FormLabel></Col>
+                            <Col size={"S"}><FormLabel  >Starts on <span className='red-star'>*</span></FormLabel></Col>
 
-                            <Col size={"B"}> <InputDate /></Col>
+                            <Col size={"B"}> <InputDate />
+                            <Input width={"small"} type={"time"} placeholder={"Number"} />
+                            <RadioInput label={"AM"} value={"AM"} name={"eventTime"} />
+                            <RadioInput label={"PM"} value={"PM"} name={"eventTime"}/>
+                            </Col>
 
                         </FormRow>
                         <FormRow>
-                            <Col size={"S"}><FormLabel  >Duration</FormLabel></Col>
+                            <Col size={"S"}><FormLabel>Duration</FormLabel>
+                            
+                            </Col>
 
-                            <Col size={"B"}><Input width={"small"} type={"number"} placeholder={"Number"} /></Col>
+                            <Col size={"B"}>
+                            <Input width={"small"} type={"number"} placeholder={"Number"} />
+                            <div className="additional-input-descpription-hour">hour</div>
+                            </Col>
 
                         </FormRow>
                     </Form>
-                    <Button buttonText={"Publish event"}></Button>
+                    <Button style={{align: 'center'}} buttonText={"Publish event"}></Button>
                 </Layout>
             </div>
         );

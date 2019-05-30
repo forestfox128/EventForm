@@ -1,5 +1,6 @@
 import React from 'react';
-
+import Layout from '../Components/Layout/Layout';
+import InfoBoard from '../Components/InfoBoard/InfoBoard';
 class SuccessScreen extends React.Component {
 
     state = {
@@ -7,7 +8,11 @@ class SuccessScreen extends React.Component {
     }
     render(){
         return(
-            <div>Success Screen</div>
+            <div style={{ marginTop: '4em' }}>
+            <Layout>
+                <InfoBoard infoType={"success"} boardTitle={"Success"} infoText={"Event has been created."}></InfoBoard>
+            </Layout>
+            </div>
         );
     }
 }

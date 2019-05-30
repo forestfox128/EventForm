@@ -1,0 +1,15 @@
+.InfoCard-success {
+    padding: 1.5em 2em 1.5em 2em;
+    background-color: #ecffe6;
+    box-shadow: 0 3px 12px #c9c9c9;
+    border: 1px solid (51, 204, 51, 0.7);
+    border-radius: 5px;
+    margin: 1.5em 0;
+    color: #333333;
+}
+
+.InfoTitle {
+    color: #99e699;
+    font-size: 28px;
+    margin: 0.5em 0 0.5em 0;
+}

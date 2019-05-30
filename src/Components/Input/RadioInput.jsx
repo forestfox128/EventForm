@@ -8,6 +8,7 @@ function RadioInput(props) {
         <input type="radio"
         autoFocus
         value={props.value}
+        name = {props.name}
         />{props.label}</div>
     );
 }
