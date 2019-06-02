@@ -1,31 +1,48 @@
-.Input-big {
+input[class^="Input"] { 
+    float: left;
     height: 2em;
+}
+
+input[class^="ErrorInput"] { 
+    float: left;
+    height: 2em;
+    border: 1px solid #d1412e;
+    border-radius: 5px;
+}
+
+input[class*="Input-big"]{
     width: 100%;
     min-width: 120px;
-    float: left;
 }
-.Input-medium {
-    height: 2em;
+
+input[class*="Input-medium"]{
     width: 35%;
     min-width: 100px;
-    float: left;
 }
-.Input-small {
-    height: 2em;
+
+input[class*="Input-small"]{
     width: 10%;
     min-width: 80px;
-    float: left;
 }
-.InputDate{
-    height: 2em;
+
+input[class*="InputDate"]{
     width: 30%;
     min-width: 100px;
+}
+
+.ErrorTextArea{
+    border: 1px solid #d1412e;
+    border-radius: 5px;
+    width: 100%;
+    min-width: 120px;
     float: left;
 }
 .TextArea {
     width: 100%;
     min-width: 120px;
     float: left;
+    border: 1px solid #ddd;
+    border-radius: 5px;
 }
 .RadioInput {
     padding: 0.5em 0.5em 0.5em 0;
@@ -33,3 +50,9 @@
     font-size: 14px;
     float: left;
 }
+.Paragraph{
+    font-size: 12px;
+    color: #b0b0b5;
+    font-style: italic;
+}
+

@@ -3,15 +3,32 @@ import './Input.css';
 
 function Input(props) {
 
-    const classname = "Input-"+props.width;
-    return (
-        <input type={props.inputType} 
+    let classname = "Input-" + props.width;
+    if (props.error)
+        classname = "Error" + classname;
+    const input = props.isRequired ? <input type={props.inputType}
         placeholder={props.placeholder}
         maxLength={props.maxLength}
         pattern={props.pattern}
-        autoFocus
+        name={props.name}
         className={classname}
+        onChange={props.onChange}
+        min={props.min}
+        max={props.max}
+        required
+    ></input> :
+        <input type={props.inputType}
+            placeholder={props.placeholder}
+            maxLength={props.maxLength}
+            pattern={props.pattern}
+            name={props.name}
+            className={classname}
+            onChange={props.onChange}
         ></input>
+
+    return (
+        input
+
     );
 }
 

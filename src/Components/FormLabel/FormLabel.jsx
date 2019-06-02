@@ -3,8 +3,13 @@ import './FormLabel.css';
 
 function FormLabel(props) {
 
+    let classname = ''
+    if(props.error)
+        classname = "FormLabelError"
+    else 
+        classname = "FormLabel"
     return (
-        <div className="FormLabel">
+        <div className={classname}>
             {props.children}
         </div>
     );

@@ -1,0 +1,24 @@
+.ErrorMessageContainer {
+    float: left;
+    color: #fff;
+    font-size: 11px;
+    margin: 0.5em 1em;
+    border-radius: 2px;
+    overflow: hidden;
+}
+.ErrorMessage{
+
+    background-color: #d1412e;
+    padding: 0.3em;
+    display: inline-block;
+    
+
+}
+.Arrow {
+    width: 0; 
+    height: 0; 
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent; 
+    border-right:5px solid #d1412e; 
+    display: inline-block;
+  }

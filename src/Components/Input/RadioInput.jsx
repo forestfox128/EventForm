@@ -9,6 +9,8 @@ function RadioInput(props) {
         autoFocus
         value={props.value}
         name = {props.name}
+        onChange = {props.onChange}
+        checked = {props.checked}
         />{props.label}</div>
     );
 }

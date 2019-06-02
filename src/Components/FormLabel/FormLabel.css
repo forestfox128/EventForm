@@ -4,3 +4,10 @@
     padding: 0.5em;
     font-size: 14px;
 }
+
+.FormLabelError {
+    text-transform: uppercase;
+    color: #d1412e;
+    padding: 0.5em;
+    font-size: 14px;
+}
