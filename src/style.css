@@ -1,15 +1,10 @@
-.additional-input-descpription-reward {
+.additional-input-descpription {
     font-size: 14px;
     color: #1a1a1a;
     padding-top: 0.7em;
-    margin-left: 30%;
-}
-
-.additional-input-descpription-hour {
-    font-size: 14px;
-    color: #1a1a1a;
-    padding-top: 0.7em;
-    margin-left: 30%;
+    padding-left: 0.7em;
+    padding-right: 0.7em;
+    float: left;
 }
 
 span.red-star{

@@ -152,6 +152,7 @@ class CreateEventScreen extends React.Component {
             <ErrorMessage text={this.state.emailErrMessage}></ErrorMessage> : '';
         const durationErrorMessage = !this.state.durationIsValid ?
             <ErrorMessage text={this.state.durationErrMessage}></ErrorMessage> : '';
+
         return (
             <div style={{ marginTop: '4em' }}>
                 <Layout>
@@ -161,6 +162,7 @@ class CreateEventScreen extends React.Component {
                                 <Col size={"S"}>
                                     <FormLabel error={!this.state.titleIsValid}>Title <span className='red-star'>*</span></FormLabel>
                                 </Col>
+
                                 <Col size={"B"}>
                                     <Input width={"big"} inputType={"text"}
                                         name={"title"}
@@ -168,6 +170,7 @@ class CreateEventScreen extends React.Component {
                                         onChange={this.onTitleValueChange}
                                         placeholder={"Make it short and clear"} isRequired={true} />
                                 </Col>
+
                                 <Col size={"S"}>
                                     {titleErrorMessage}
                                 </Col>
@@ -176,38 +179,42 @@ class CreateEventScreen extends React.Component {
                                 <Col size={"S"}>
                                     <FormLabel error={!this.state.descriptionIsValid}>Description <span className='red-star'>*</span></FormLabel>
                                 </Col>
+
                                 <Col size={"B"}><Textarea rows={"8"}
                                     onChange={this.onDescriptionValueChange}
                                     error={!this.state.descriptionIsValid}
                                     maxLength={"140"} currentSignNum={this.state.textAreaSignNumber}
                                     placeholder={"Write about your event, be creative"} /></Col>
+
                                 <Col size={"S"}>
                                     {descriptionErrorMessage}
                                 </Col>
                             </FormRow>
                             <FormRow>
-                                <Col size={"S"}><FormLabel  >Category </FormLabel></Col>
+                                <Col size={"S"}><FormLabel > Category </FormLabel></Col>
 
                                 <Col size={"B"}><Select categoriesName={categories}
                                     onChange={this.onCategoryValueChange}
                                     title={"Select category"}
-                                    description={"Descibe topic and people who should be interested in this event"} /></Col>
+                                    description={"Descibe topic and people who should be interested in this event"} />
+                                </Col>
 
                             </FormRow>
                             <FormRow>
-                                <Col size={"S"}><FormLabel  >Payment </FormLabel></Col>
+                                <Col size={"S"}><FormLabel> Payment </FormLabel></Col>
 
                                 <Col size={"B"}>
                                     <RadioInput label={"Event free"} value={"eventFree"}
                                         onChange={this.changePayment} checked={!this.state.paidEvent} name={"eventPayment"} />
                                     <RadioInput label={"Event paid"} value={"eventPaid"}
                                         onChange={this.changePayment} checked={this.state.paidEvent} name={"eventPayment"} />
-                                    {this.state.paidEvent ? <Input width={"small"} inputType={"number"}
-                                        name={"title"}
-                                        error={!this.state.paymentIsValid}
-                                        onChange={this.onPaymentValueChange}
-                                        placeholder={"Fee"} isRequired={true} /> : ''}
+                                
+                                    {this.state.paidEvent ? <div><Input width={"small"} inputType={"number"}
+                                        name={"title"} error={!this.state.paymentIsValid}
+                                        onChange={this.onPaymentValueChange} placeholder={"Fee"} isRequired={true} />
+                                        <div className="additional-input-descpription">$</div></div>: ''}
                                 </Col>
+
                                 <Col size={"S"}>
                                     {paymentErrorMessage}
                                 </Col>
@@ -215,12 +222,15 @@ class CreateEventScreen extends React.Component {
                             <FormRow>
                                 <Col size={"S"}><FormLabel error={!this.state.rewardIsValid}>Reward</FormLabel></Col>
 
-                                <Col size={"B"}><div ><Input width={"small"}
+                                <Col size={"B"}>
+                                <div><Input width={"small"}
                                     onChange={this.onRewardValueChange}
                                     error={!this.state.rewardIsValid}
                                     inputType={"number"} placeholder={"Number"} />
-                                    <div className="additional-input-descpription-reward">reward points for attendance</div>
-                                </div></Col>
+                                    <div className="additional-input-descpription">reward points for attendance</div>
+                                </div>
+                                </Col>
+
                                 <Col size={"S"}>
                                     {rewardErrorMessage}
                                 </Col>
@@ -231,7 +241,9 @@ class CreateEventScreen extends React.Component {
                             <FormRow>
                                 <Col size={"S"}><FormLabel  >Responsible <span className='red-star'>*</span></FormLabel></Col>
 
-                                <Col size={"B"}><SelectWithCat categoriesName={employes} /></Col>
+                                <Col size={"B"}>
+                                    <SelectWithCat categoriesName={employes} />
+                                </Col>
 
                             </FormRow>
                             <FormRow>
@@ -240,7 +252,9 @@ class CreateEventScreen extends React.Component {
                                 <Col size={"B"}><Input width={"big"} inputType={"email"}
                                     name={"email"}
                                     error={!this.state.emailIsValid}
-                                    onChange={this.onEmailValueChange} placeholder={"Email"} /></Col>
+                                    onChange={this.onEmailValueChange} placeholder={"Email"} />
+                                </Col>
+
                                 <Col size={"S"}>
                                     {emailErrorMessage}
                                 </Col>
@@ -252,6 +266,7 @@ class CreateEventScreen extends React.Component {
                                 <Col size={"S"}><FormLabel  >Starts on <span className='red-star'>*</span></FormLabel></Col>
 
                                 <Col size={"B"}> <InputDate isRequired={true} onChange={this.onDateValueChange}/>
+                                <div className="additional-input-descpription">at</div>
                                     <Input width={"small"} inputType={"time"} 
                                     placeholder={"Number"} min={"00:00"} max={"12:00"} 
                                     onChange={this.onHourValueChange}
@@ -273,8 +288,9 @@ class CreateEventScreen extends React.Component {
                                     <Input width={"small"} inputType={"number"}
                                         error={!this.state.durationIsValid}
                                         onChange={this.onDurationValueChange} placeholder={"Number"} />
-                                    <div className="additional-input-descpription-hour">hour</div>
+                                    <div className="additional-input-descpription">hour</div>
                                 </Col>
+                                
                                 <Col size={"S"}>
                                     {durationErrorMessage}
                                 </Col>

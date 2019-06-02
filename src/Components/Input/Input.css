@@ -1,13 +1,13 @@
 input[class^="Input"] { 
-    float: left;
     height: 2em;
+    float: left;
 }
 
 input[class^="ErrorInput"] { 
-    float: left;
     height: 2em;
     border: 1px solid #d1412e;
-    border-radius: 5px;
+    border-radius: 2px;
+    float: left;
 }
 
 input[class*="Input-big"]{
@@ -23,11 +23,13 @@ input[class*="Input-medium"]{
 input[class*="Input-small"]{
     width: 10%;
     min-width: 80px;
+    
 }
 
 input[class*="InputDate"]{
     width: 30%;
     min-width: 100px;
+    display: inline-block;
 }
 
 .ErrorTextArea{
@@ -48,7 +50,7 @@ input[class*="InputDate"]{
     padding: 0.5em 0.5em 0.5em 0;
     color:#b0b0b5;
     font-size: 14px;
-    float: left;
+   float:left;
 }
 .Paragraph{
     font-size: 12px;
