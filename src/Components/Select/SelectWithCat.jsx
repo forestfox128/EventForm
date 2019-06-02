@@ -25,7 +25,7 @@ function SelectWithCat(props) {
 
     return (
         <div>
-        <select onChange={props.onChange} className="Select-big">
+        <select onChange={props.onChange} className="Select-big" name={props.name} required>
             {values}
         </select>
         <p>{props.description}</p>
