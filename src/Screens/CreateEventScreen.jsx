@@ -12,6 +12,7 @@ import FormRow from '../Components/FormRow/FormRow';
 import Col from '../Components/FormRow/Col';
 import FormLabel from '../Components/FormLabel/FormLabel';
 import ErrorMessage from '../Components/ErrorMessage/ErrorMessage';
+import InfoBoard from '../Components/InfoBoard/InfoBoard';
 import categories from '../mocks/categories.json';
 import employes from '../mocks/employes.json';
 
@@ -28,7 +29,7 @@ class CreateEventScreen extends React.Component {
         descriptionIsValid: true,
         descriptionErrMessage: 'Description can not be empty',
 
-        categoryValue: '',
+        categoryValue: 0,
         categoryIsValid: false,
         categoryErrMessage: '',
 
@@ -50,24 +51,41 @@ class CreateEventScreen extends React.Component {
         startsDayValue: '',
         isAM: true,
         startHourValue: '',
+        dateIsValid: '',
+        dateErrMessage: '',
         startDate: '',
 
         durationValue: 0,
         durationIsValid: true,
         durationErrMessage: 'This must be a number',
 
-        textAreaSignNumber: 0
+        textAreaSignNumber: 0,
+        isFormSend: false,
+        currentYear: '',
+        currentMonth: '',
+        currentDay: ''
     };
+
+    componentDidMount() {
+        var today = new Date(),
+            date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+        console.log(date);
+        this.setState({currentYear: today.getFullYear(),
+            currentMonth: (today.getMonth() + 1),
+            currentDay: today.getDate()});
+    }
 
     onTitleValueChange = (event) => {
         this.setState({ titleValue: event.target.value, titleIsValid: event.target.checkValidity() });
     }
     onDescriptionValueChange = (event) => {
-        this.setState({ descriptionValue: event.target.value, descriptionIsValid: event.target.checkValidity(),
-        textAreaSignNumber: event.target.value.length });
+        this.setState({
+            descriptionValue: event.target.value, descriptionIsValid: event.target.checkValidity(),
+            textAreaSignNumber: event.target.value.length
+        });
     }
     onCategoryValueChange = (event) => {
-        this.setState({ categoryValue: event.target.value });
+        this.setState({ categoryValue: parseInt(event.target.value) });
     }
     changePayment = () => {
         this.setState({ paidEvent: !this.state.paidEvent });
@@ -78,6 +96,9 @@ class CreateEventScreen extends React.Component {
     onRewardValueChange = (event) => {
         this.setState({ rewardValue: event.target.value, rewardIsValid: event.target.checkValidity() });
     }
+    onResponsibleValueChange = (event) => { 
+        this.setState({ responsibleValue: parseInt(event.target.value) });
+    }
     onEmailValueChange = (event) => {
         this.setState({ emailValue: event.target.value, emailIsValid: event.target.checkValidity() });
     }
@@ -85,30 +106,38 @@ class CreateEventScreen extends React.Component {
         this.setState({ isAM: !this.state.isAM });
     }
     onDateValueChange = (event) => {
-        this.setState({ startsDayValue: event.target.value});
-        console.log(event.target.value)
+        this.setState({ startsDayValue: event.target.value, dateIsValid: event.target.checkValidity(),
+        dateErrMessage: "Date can not be empty" });
+        const dateArr = event.target.value.split('-')
+        if(dateArr[0] < this.state.currentYear){
+            this.setState({ dateIsValid: false, dateErrMessage: "Event can not be prior" });  
+        }else if(dateArr[1] < this.state.currentMonth){
+            this.setState({ dateIsValid: false, dateErrMessage: "Event can not be prior" }); 
+        }else if(dateArr[2] < this.state.currentDay){
+            this.setState({ dateIsValid: false, dateErrMessage: "Event can not be prior" }); 
+        }
     }
     onHourValueChange = (event) => {
-        this.setState({ startHourValue: event.target.value});
-        console.log(event.target.value)
+        this.setState({ startHourValue: event.target.value, dateIsValid: event.target.checkValidity(),
+        dateErrMessage: "Date can not be empty" });
     }
     onDurationValueChange = (event) => {
         this.setState({ durationValue: event.target.value, durationIsValid: event.target.checkValidity() });
     }
 
     checkForm = () => {
-        
+
     }
 
     correctDateFormat = () => {
-        if(this.state.isAM){
-            return this.state.startsDayValue+this.state.startHourValue;
+        if (this.state.isAM) {
+            return this.state.startsDayValue + this.state.startHourValue;
         }
-        else{
+        else {
             let hour = this.state.startHourValue;
             let hourArr = hour.split(':');
-            hour = +hourArr[0] + 12 +":"+hourArr[1]
-            return this.state.startsDayValue+hour;
+            hour = +hourArr[0] + 12 + ":" + hourArr[1]
+            return this.state.startsDayValue + hour;
         }
     }
 
@@ -133,10 +162,10 @@ class CreateEventScreen extends React.Component {
 
     onSubmit = e => {
         e.preventDefault();
-        
+
         // const form = e.target;
         // if (this.checkForm(form))
-            console.log(this.createDataOutput())
+        console.log(this.createDataOutput())
     }
 
     render() {
@@ -150,13 +179,13 @@ class CreateEventScreen extends React.Component {
             <ErrorMessage text={this.state.rewardErrMessage}></ErrorMessage> : '';
         const emailErrorMessage = !this.state.emailIsValid ?
             <ErrorMessage text={this.state.emailErrMessage}></ErrorMessage> : '';
+        const dateErrorMessage = !this.state.dateIsValid ?
+            <ErrorMessage text={this.state.dateErrMessage}></ErrorMessage> : '';
         const durationErrorMessage = !this.state.durationIsValid ?
             <ErrorMessage text={this.state.durationErrMessage}></ErrorMessage> : '';
 
-        return (
-            <div style={{ marginTop: '4em' }}>
-                <Layout>
-                    <form autoComplete="off" className='FormField' onSubmit={this.onSubmit}>
+        const form = (
+            <form autoComplete="off" className='FormField' onSubmit={this.onSubmit}>
                         <Form formTitle={"About"}>
                             <FormRow>
                                 <Col size={"S"}>
@@ -208,11 +237,11 @@ class CreateEventScreen extends React.Component {
                                         onChange={this.changePayment} checked={!this.state.paidEvent} name={"eventPayment"} />
                                     <RadioInput label={"Event paid"} value={"eventPaid"}
                                         onChange={this.changePayment} checked={this.state.paidEvent} name={"eventPayment"} />
-                                
+
                                     {this.state.paidEvent ? <div><Input width={"small"} inputType={"number"}
                                         name={"title"} error={!this.state.paymentIsValid}
                                         onChange={this.onPaymentValueChange} placeholder={"Fee"} isRequired={true} />
-                                        <div className="additional-input-descpription">$</div></div>: ''}
+                                        <div className="additional-input-descpription">$</div></div> : ''}
                                 </Col>
 
                                 <Col size={"S"}>
@@ -223,12 +252,12 @@ class CreateEventScreen extends React.Component {
                                 <Col size={"S"}><FormLabel error={!this.state.rewardIsValid}>Reward</FormLabel></Col>
 
                                 <Col size={"B"}>
-                                <div><Input width={"small"}
-                                    onChange={this.onRewardValueChange}
-                                    error={!this.state.rewardIsValid}
-                                    inputType={"number"} placeholder={"Number"} />
-                                    <div className="additional-input-descpription">reward points for attendance</div>
-                                </div>
+                                    <div><Input width={"small"}
+                                        onChange={this.onRewardValueChange}
+                                        error={!this.state.rewardIsValid}
+                                        inputType={"number"} placeholder={"Number"} />
+                                        <div className="additional-input-descpription">reward points for attendance</div>
+                                    </div>
                                 </Col>
 
                                 <Col size={"S"}>
@@ -239,10 +268,10 @@ class CreateEventScreen extends React.Component {
 
                         <Form formTitle={"Coordinator"}>
                             <FormRow>
-                                <Col size={"S"}><FormLabel  >Responsible <span className='red-star'>*</span></FormLabel></Col>
+                                <Col size={"S"}><FormLabel>Responsible <span className='red-star'>*</span></FormLabel></Col>
 
                                 <Col size={"B"}>
-                                    <SelectWithCat categoriesName={employes} />
+                                    <SelectWithCat onChange={this.onResponsibleValueChange} categoriesName={employes} />
                                 </Col>
 
                             </FormRow>
@@ -265,18 +294,25 @@ class CreateEventScreen extends React.Component {
                             <FormRow>
                                 <Col size={"S"}><FormLabel  >Starts on <span className='red-star'>*</span></FormLabel></Col>
 
-                                <Col size={"B"}> <InputDate isRequired={true} onChange={this.onDateValueChange}/>
-                                <div className="additional-input-descpription">at</div>
-                                    <Input width={"small"} inputType={"time"} 
-                                    placeholder={"Number"} min={"00:00"} max={"12:00"} 
-                                    onChange={this.onHourValueChange}
-                                    isRequired={true} />
+                                <Col size={"B"}>
+                                    <InputDate isRequired={true} onChange={this.onDateValueChange} />
+
+                                    <div className="additional-input-descpription">at</div>
+
+                                    <Input width={"small"} inputType={"time"}
+                                        placeholder={"Number"} min={"00:00"} max={"12:00"}
+                                        onChange={this.onHourValueChange}
+                                        isRequired={true} />
+
                                     <RadioInput label={"AM"} value={"AM"}
                                         onChange={this.changeDayTime} checked={this.state.isAM}
                                         name={"eventTime"} />
                                     <RadioInput label={"PM"} value={"PM"}
                                         onChange={this.changeDayTime} checked={!this.state.isAM}
                                         name={"eventTime"} />
+                                </Col>
+                                <Col size={"S"}>
+                                    {dateErrorMessage}
                                 </Col>
 
                             </FormRow>
@@ -290,7 +326,7 @@ class CreateEventScreen extends React.Component {
                                         onChange={this.onDurationValueChange} placeholder={"Number"} />
                                     <div className="additional-input-descpription">hour</div>
                                 </Col>
-                                
+
                                 <Col size={"S"}>
                                     {durationErrorMessage}
                                 </Col>
@@ -298,6 +334,11 @@ class CreateEventScreen extends React.Component {
                         </Form>
                         <Button buttonText={"Publish event"}></Button>
                     </form>
+        )
+        return (
+            <div className="layoutHelper">
+                <Layout>
+                    {!this.state.isFormSend ? form : <InfoBoard infoType={"success"} boardTitle={"Success"} infoText={"Event has been created."}></InfoBoard>}
                 </Layout>
             </div>
         );
