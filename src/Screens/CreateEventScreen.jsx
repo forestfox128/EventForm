@@ -289,7 +289,7 @@ class CreateEventScreen extends React.Component {
 
                         <Form formTitle={"Coordinator"}>
                             <FormRow>
-                                <Col size={"S"}><FormLabel>Responsible <span className='red-star'>*</span></FormLabel></Col>
+                                <Col size={"S"}><FormLabel error={!this.state.responsible.isValid}>Responsible <span className='red-star'>*</span></FormLabel></Col>
 
                                 <Col size={"B"}>
                                     <SelectWithCat name={"responsible"} onChange={this.onValueChange} categoriesName={employes} />
@@ -315,16 +315,19 @@ class CreateEventScreen extends React.Component {
 
                         <Form formTitle={"When"}>
                             <FormRow>
-                                <Col size={"S"}><FormLabel  >Starts on <span className='red-star'>*</span></FormLabel></Col>
+                                <Col size={"S"}><FormLabel error={!this.state.date.isValid} >Starts on <span className='red-star'>*</span></FormLabel></Col>
 
                                 <Col size={"B"}>
-                                    <InputDate isRequired={true} name={"date"} onChange={this.onValueChange} />
+                                    <InputDate isRequired={true} name={"date"} 
+                                    error={!this.state.date.isValid}
+                                    onChange={this.onValueChange} />
 
                                     <div className="additional-input-descpription">at</div>
 
                                     <Input width={"small"} inputType={"time"} name={"hour"}
                                         placeholder={"Number"} min={"00:00"} max={"12:00"}
                                         onChange={this.onValueChange}
+                                        error={!this.state.hour.isValid}
                                         isRequired={true} />
 
                                     <RadioInput label={"AM"} value={"AM"}
